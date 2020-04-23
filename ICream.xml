@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalogue>
+  <section name="Ice-Cream">
+    <entree>
+      <item>2 scoop</item>
+      <price>2,75.00</price>
+    </entree>
+    <entree>
+      <item>cereza</item>
+      <price>2.00</price>
+    </entree>
+    <entree>
+      <item>oreo</item>
+      <price>25</price>
+    </entree>
+    <entree>
+      <item>Doble sabor</item>
+      <price>25</price>
+    </entree>
+    <entree>
+      <item>Cerezass</item>
+      <price>2</price>
+    </entree>
+    <entree>
+      <item>Bananas</item>
+      <price>25.00</price>
+    </entree>
+    <entree>
+      <item>Chocolate</item>
+      <price>2.75</price>
+    </entree>
+  </section>
+  <section name="Crepes">
+    <entree crp="true">
+      <item>Nutella</item>
+      <price>4,50.00</price>
+    </entree>
+    <entree crp="true">
+      <item>Nutella + Strawberries or Bananas</item>
+      <price>5,20.00</price>
+    </entree>
+    <entree crp="true">
+      <item>Nutella + Strawberries + Bananas</item>
+      <price>5,50.00</price>
+    </entree>
+  </section>
+  <section name="Drinks/Extras">
+    <entree>
+      <item>Water</item>
+      <price>1,00.00</price>
+    </entree>
+    <entree>
+      <item>Coke</item>
+      <price>1,25.00</price>
+    </entree>
+  </section>
+</catalogue>

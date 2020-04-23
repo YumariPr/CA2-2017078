@@ -1,0 +1,225 @@
+<!-- The code used throughout the program was part facilitated by the teacher, the use of a template and code managed by me.
+Yumari Peña. Student number 2017078.--> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Sweet Gelato's</title>
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/business-casual.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/ICream.css">
+    
+    <script src="js/ICream.js"></script>
+
+    <script>
+        window.addEventListener("load", function() {
+            document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+            document.querySelector("#calcBill").addEventListener("click", function() {
+                document.forms[1].txtBillAmt.value = calculateBill('menuTable');
+            });
+            document.querySelector("#showCp").addEventListener("click", function() {
+                highlightCrep('menuTable', this.checked);
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+  <h1 class="site-heading text-center text-white d-none d-lg-block">
+    <span class="site-heading-upper text-primary mb-3">Get your best Treats</span>
+    <span class="site-heading-lower">Sweet Gelato's</span>
+  </h1>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Sweet Gelato's</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+                <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+          </li>
+          <li class="nav-item px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="products.html">Products</a>
+          </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="store.html">Store &amp; Estimated order</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="page-section cta">
+      
+              <div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-left">
+				<h1 class="mt-5">Welcome to Sweet Gelato's</h1>
+				<p class="lead">Select your entrees from the menu below</p>
+			</div>
+			<div id="results" class="col-lg-8 text-center order-3"></div>
+			<div class="col-lg-4 text-center order-2">
+				<form name="formularioContacto" enctype="application/json" action="/post/json" method="post">
+					<div class="form-group">
+						<select class="form-control" name="sec_n">
+							<option value="0">Ice-Cream</option>
+							<option value="1">Crepes</option>
+							<option value="2">Drinks/Extras</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="item" placeholder="Item">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="text" name="price" placeholder="Price">
+					</div>
+					<button type="submit" class="btn btn-primary btn-block">Submit</button>
+				</form>
+                    <button id="update" class="btn btn-success btn-block">Update</button>
+                    
+                    <button id="delete" class="btn btn-block btn-danger">Delete</button>
+                    <p class="text-muted">To delete an entree, click the required row first</p>
+                <form>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                                                        <span class="input-group-text">&euro;</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Total" name="txtBillAmt">
+                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <input type="checkbox" id="showCp" aria-label="Checkbox for following text input">
+                            </div>
+                        </div>
+                        <input class="btn btn-block btn-secondary" type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill">
+                    </div>
+                    
+                </form>
+            </div>
+		</div>
+	</div>
+<br/>
+<br/>
+    <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-5">
+                <span class="section-heading-upper">Come On In</span>
+                <span class="section-heading-lower">We're Open</span>
+              </h2>
+              <ul class="list-unstyled list-hours mb-5 text-left mx-auto">
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Sunday
+                  <span class="ml-auto">Closed</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Monday
+                  <span class="ml-auto">7:00 AM to 8:00 PM</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Tuesday
+                  <span class="ml-auto">7:00 AM to 8:00 PM</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Wednesday
+                  <span class="ml-auto">7:00 AM to 8:00 PM</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Thursday
+                  <span class="ml-auto">7:00 AM to 8:00 PM</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Friday
+                  <span class="ml-auto">7:00 AM to 8:00 PM</span>
+                </li>
+                <li class="list-unstyled-item list-hours-item d-flex">
+                  Saturday
+                  <span class="ml-auto">9:00 AM to 5:00 PM</span>
+                </li>
+              </ul>
+
+              <p class="address mb-5">
+                <em>
+                  <strong>Dublin City Center</strong>
+                  <br>
+                  Dublin - Ireland
+                </em>
+              </p>
+              <p class="mb-0">
+                <small>
+                  <em>Call Anytime</em>
+                </small>
+                <br>
+                (353) 834-8875
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  
+    <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0 small">Copyright &copy; Your Website 2019</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="jquery/jquery.min.js"></script>
+	<script src="jquery/table.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+  </body>
+
+<!--Validate empty field and blank spaces-->
+<!--Validate numeric data-->
+<script type="text/javascript">
+window.onload = function () {
+document.formularioContacto.item.focus();
+document.formularioContacto.addEventListener('submit', validarFormulario);
+}
+function validarFormulario(evObject) {
+evObject.preventDefault();
+var todoCorrecto = true;
+var formulario = document.formularioContacto;
+for (var i=0; i<formulario.length; i++) {
+                if(formulario[i].type =='text') {
+                               if (formulario[i].value == null || formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value)){
+                               alert (formulario[i].name+ ' Cannot be empty or contain only blank spaces');
+                               todoCorrecto=false;
+                               }
+                }
+                }
+                if (isNaN(formulario.item.value)==false ||  /^[A-Z][a-z]*/.test(formulario.item.value)==false )  
+                {alert ('Field Item must be alphabetical');
+todoCorrecto=false;}
+                if (isNaN(formulario.price.value)==true || /^[0-9]{1,4}/.test(formulario.price.value)==false ) // /[0-9]+(\,[0-9][0-9])+(\.[0-9][0-9])$/
+                {alert ('Field Price must be numeric');
+todoCorrecto=false;}
+
+if (todoCorrecto ==true) {formulario.submit();}
+}
+</script>
+
+  <!-- Script to highlight the active date in the hours list -->
+  <script>
+    $('.list-hours li').eq(new Date().getDay()).addClass('today');
+  </script>
+
+</html>

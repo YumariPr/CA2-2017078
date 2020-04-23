@@ -1,0 +1,43 @@
+/*The code used throughout the program was part facilitated by the teacher, the use of a template and code managed by me.
+Yumari Peña. Student number 2017078.*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+table, th, td {
+     border-collapse: collapse;
+     border: 1px solid black;
+     text-align: center;
+}
+ table {
+     border-collapse: collapse;
+     width:100%;
+}
+ td, th {
+     border: 1px solid #ced4da;
+     padding: 0.5rem;
+     text-align: left;
+}
+ th {
+     font-weight: bold;
+}
+.editar {
+        color: blue; cursor:pointer;}
+
+#contenedorForm {
+                margin-left: 45px; font-size:12px;}
+
+.boton {   color: black; padding: 5px; margin: 10px;
+            background-color: #b9c9fe;
+            font-weight: bold; }
+.centrado{
+            text-align:center;
+}
+.selected {
+            background-color: #dc3545;
+            color: #FFF;
+}
