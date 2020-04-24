@@ -29,6 +29,10 @@
       <item>Chocolate</item>
       <price>2.75</price>
     </entree>
+    <entree>
+      <item>Vanilla</item>
+      <price>3</price>
+    </entree>
   </section>
   <section name="Crepes">
     <entree crp="true">

@@ -2,7 +2,7 @@ var mongoose = require( 'mongoose');
 
 var userSchema = new mongoose. Schema({
     Item: String,
-    Price: Double
+    Price: Number
 });
 
 module. exports = mongoose.model('User', userSchema);
