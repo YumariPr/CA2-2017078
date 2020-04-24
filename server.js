@@ -8,13 +8,14 @@ mongoose = require('mongoose');
 require('dotenv').config();
 
 
-var app = express();
+var app = require('./app');
+
 var port = process.env.PORT || 3000;
-var userCtrl = require('./user-controller');
+var userCtrl = require('./api/routes/user-controller');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(require('./routes'));
+app.use(require('./api/routes/routes'));
 
 app.listen(port, function(err){
     console.log("Listening on Port: " + port);
