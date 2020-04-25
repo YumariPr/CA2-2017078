@@ -1,17 +1,18 @@
-'use strict'
-var logger = require("morgan"),
-cors = require("cors"),
-http = require("http"),
-express = require("express"),
-bodyParser = require("body-parser"),
+http = require("http");
+var logger = require("morgan");
+cors = require("cors");
+express = require("express");
+bodyParser = require("body-parser");
 mongoose = require('mongoose');
+app = express();
 require('dotenv').config();
 
 
-var app = require('./app');
+//var app = require('./app');
 
 var port = process.env.PORT || 3000;
-var userCtrl = require('./api/routes/user-controller');
+//var userCtrl = require('./api/controller/user-controller');
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
