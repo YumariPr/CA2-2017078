@@ -37,7 +37,6 @@ function saveProduct (req, res){
         if (err) res.status(500).send({message : 'Error to saved the product in the data base'})
 
         res.send(200).send({product: productStored })
-    
     })
 }
 
