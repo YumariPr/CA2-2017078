@@ -18,7 +18,7 @@ function draw_table()
 			}
 		});
 	};
-	$.getJSONuncached("/get/html")
+	$.getJSONuncached("/get/html" + '.env')
 };
 
 function select_row()
@@ -75,3 +75,24 @@ $(document).ready(function ()
     })
 
 };*/
+/*
+function productList(){
+    $.ajax({
+        url:'',
+        type: 'GET',
+        dataType:'jason',
+        cache: false,
+        success: function(data){
+            createPtable(data);
+        }
+    });
+}
+
+function createPtable(){
+    let productList = '';
+    $.each(data, function(index){
+        productList += '<tr id="'+data[index]._id+'">'
+    })
+
+}
+*/

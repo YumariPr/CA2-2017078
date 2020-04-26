@@ -1,14 +1,15 @@
 'use strict'
-var express = require('express'),
-router = express.Router(),
-userCtrl = require('./user-controller');
+const express = require('express');
+const userCtrl = require('../controllers/user-controller');
 
 
-router.post('/users', userCtrl.createUser);
-router.get('/users', userCtrl.getUsers);
-router.get('/users/:Product', userCtrl.getUser);
-router.delete('/users/:Product', userCtrl.deleteUser);
-router.put('/users/:Product', userCtrl.updateUser);
+const router = express.Router();
+
+router.post('/', userCtrl.saveProduct);
+router.get('/users', userCtrl.getProducts);
+router.get('/users/:Product', userCtrl.getProduct);
+router.delete('/users/:Product', userCtrl.deleteProduct);
+//router.put('/users/:Product', userCtrl.updateUser);
 
 module.exports.UPLOAD_PATH = 'uploads';
 

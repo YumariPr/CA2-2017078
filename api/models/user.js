@@ -6,4 +6,4 @@ var userSchema = new mongoose. Schema({
     price: Number
 });
 
-module. exports = mongoose.model('Product', userSchema);
+module.exports = mongoose.model('Product', userSchema);

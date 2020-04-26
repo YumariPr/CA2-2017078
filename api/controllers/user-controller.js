@@ -1,10 +1,11 @@
 'use strict'
-Product = require('../models/user')
+const Product = require('../models/user');
 
 function getProduct (req, res) {
-    let productId = req.params.productId
-
-    Product.findById(productId, (err, product) => {
+    let productId = req.params.Product
+    console.log(req.params);
+    Product.findById(productId, (err, products) => {
+        console.log(productId);
       if (err) return res.status(500).send({message : 'Erroor'})
       if (!products) return res.status(404).send({message: 'Product does not exist'})
 
@@ -25,17 +26,18 @@ Product.find({}, (err, products) => {
 }
 
 function saveProduct (req, res){
-    console.log('POST /api/product')
-    console.log(req.body)
+   console.log('POST /api/product');
+   console.log(req.body);
 
-    let product = new Product()
-    product.item = req.body.item
-    product.price = req.body.price
-
+    let product = new Product();
+    product.item = req.body.item;
+    product.price = req.body.price;
+    
     product.save((err, productStored) => {
         if (err) res.status(500).send({message : 'Error to saved the product in the data base'})
 
-    res.send(200).send({product: productStored })
+        res.send(200).send({product: productStored })
+    
     })
 }
 
@@ -51,19 +53,19 @@ Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
 }
 
 function deleteProduct (req, res) {
-    let productId = req.params.productId
-
+    let productId = req.params.Product
+    console.log(productId);
     Product.findById(productId, (err, product) => {
     if (err) res.status(500).send({message : 'Error to delete the product in the data base'})
 
     product.remove(err => {
         if (err) res.status(500).send({message: 'Error to the delete the product'})
-        res.status(200).send({product: productUpdated })
+        res.status(200).send({message : 'Product Removed'})
     })
     })
 }
 
-exports = {
+module.exports = {
     getProduct,
     getProducts,
     saveProduct,
