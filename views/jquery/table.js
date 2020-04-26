@@ -18,7 +18,8 @@ function draw_table()
 			}
 		});
 	};
-	$.getJSONuncached("/get/html" + '.env')
+    $.getJSONuncached("/get/html")
+    //$.getJSONuncached("/get/html" + '.env')
 };
 
 function select_row()
@@ -57,6 +58,28 @@ $(document).ready(function ()
 	draw_table();
 });
 
+function createPtable(formulario){
+    let productList = '';
+  //  $.each(formulario, function(index){
+
+        $.ajax(
+		{
+			url: "https://3000-c436533f-e8d7-4bf5-8430-d4f4f3497532.ws-us02.gitpod.io/",
+			type: "POST",
+			data:
+			{
+				item: formulario.item.value,
+				price: formulario.price.value
+			},
+			dataType: 'json',
+			success: function(formulario){
+
+            }
+		})
+        //productList += '<tr id="'+data[index]._id+'">'
+   // })
+
+};
 /*function update_row(sec, ent)
 {
     $("#update").click(function()){

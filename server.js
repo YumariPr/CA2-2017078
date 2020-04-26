@@ -4,9 +4,8 @@ cors = require("cors");
 express = require("express");
 bodyParser = require("body-parser");
 mongoose = require('mongoose');
-app = express();
 require('dotenv').config();
-//var app = require('./app');
+const app = require('./app');
 
 var port = process.env.PORT || 3000;
 //var userCtrl = require('./api/controller/user-controller');
