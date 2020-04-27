@@ -71,19 +71,8 @@ Yumari Peña. Student number 2017078.-->
 				<h1 class="mt-5">Welcome to Sweet Gelato's</h1>
 				<p class="lead">Select your entrees from the menu below</p>
 			</div>
-            <div id="results" class="col-lg-8 text-center order-3">
-                <table id="results_table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            
+      
+        
 			<div class="col-lg-4 text-center order-2">
 				<form id="adminForm"  enctype="application/json" action="/products" method="post">
 					<div class="form-group">
@@ -99,30 +88,25 @@ Yumari Peña. Student number 2017078.-->
 					<div class="form-group">
 						<input class="form-control" type="text" name="price" placeholder="Price">
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Submit</button>
+					<input type="hidden" name="item_id" id="item_id">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
 				</form>
-                    <button id="update" class="btn btn-success btn-block">Update</button>
-                    
                     <button id="delete" class="btn btn-block btn-danger">Delete</button>
                     <p class="text-muted">To delete an entree, click the required row first</p>
-                <form>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                                                        <span class="input-group-text">&euro;</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Total" name="txtBillAmt">
-                         <div class="input-group-append">
-                            <div class="input-group-text">
-                                <input type="checkbox" id="showCp" aria-label="Checkbox for following text input">
-                            </div>
-                        </div>
-                        <input class="btn btn-block btn-secondary" type="button" name="btnCalcBill" value="Calculate Bill" id="calcBill">
-                    </div>
-                    
-                </form>
-            </div>
+             </div>
 		</div>
 	</div>
+      <div id="results" class="col-lg-8 text-center order-3">
+                <table id="results_table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table></div>
 <br/>
 <br/>
     <div class="container">
