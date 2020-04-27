@@ -187,35 +187,6 @@ Yumari Peña. Student number 2017078.-->
 
   </body>
 
-<!--Validate empty field and blank spaces-->
-<!--Validate numeric data-->
-<script type="text/javascript">
-window.onload = function () {
-document.formularioContacto.item.focus();
-document.formularioContacto.addEventListener('submit', validarFormulario);
-}
-function validarFormulario(evObject) {
-evObject.preventDefault();
-var todoCorrecto = true;
-var formulario = document.formularioContacto;
-for (var i=0; i<formulario.length; i++) {
-                if(formulario[i].type =='text') {
-                               if (formulario[i].value == null || formulario[i].value.length == 0 || /^\s*$/.test(formulario[i].value)){
-                               alert (formulario[i].name+ ' Cannot be empty or contain only blank spaces');
-                               todoCorrecto=false;
-                               }
-                }
-                }
-                if (isNaN(formulario.item.value)==false ||  /^[A-Z][a-z]*/.test(formulario.item.value)==false )  
-                {alert ('Field Item must be alphabetical');
-todoCorrecto=false;}
-                if (isNaN(formulario.price.value)==true || /^[0-9]{1,4}/.test(formulario.price.value)==false ) // /[0-9]+(\,[0-9][0-9])+(\.[0-9][0-9])$/
-                {alert ('Field Price must be numeric');
-todoCorrecto=false;}
-
-if (todoCorrecto ==true) {formulario.submit();}
-}
-</script>
 
   <!-- Script to highlight the active date in the hours list -->
   <script>

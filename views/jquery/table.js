@@ -18,9 +18,25 @@ function draw_table()
 			}
 		});
 	};
-    $.getJSONuncached("/get/html")
-    //$.getJSONuncached("/get/html" + '.env')
+    $.getJSONuncached("/users")
 };
+
+function buildTable(html) {
+    
+    let usersHTML = '';
+    $.each(html, function(index) {
+        usersHTML += '<tr id="'+html[index]._id+'">'
+            +  '<td align="left">'
+            +  '<h5>'+html[index].item+'</h5>'
+            +  '</td>'
+            +  '<td align="right">'+html[index].price+'</td>'
+            +  '<td>'
+            +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">Edit</button>'
+            +  '</td></tr>';
+    });
+    $('#results_table tbody').html(usersHTML);
+}
+
 
 function select_row()
 {
@@ -58,64 +74,55 @@ $(document).ready(function ()
 	draw_table();
 });
 
-function createPtable(formulario){
-    let productList = '';
-  //  $.each(formulario, function(index){
+// Select Row for Edit/Delete
+    $('body').on('click', '.edit-row', function() {
+        itemId = $(this).data('item');
 
-        $.ajax(
-		{
-			url: "https://3000-c436533f-e8d7-4bf5-8430-d4f4f3497532.ws-us02.gitpod.io/",
-			type: "POST",
-			data:
-			{
-				item: formulario.item.value,
-				price: formulario.price.value
-			},
-			dataType: 'json',
-			success: function(formulario){
-
+        $.ajax({
+            url: '/users/' + itemId,
+            type: 'GET',
+            dataType: 'json',
+            cache: false, // Appends _={timestamp} to the request query string
+            success: function(data) {
+                // data is a json object.
+                $("input[name='item_id']").val(data._id);
+                $("input[name='item']").val(data.item);
+                $("input[name='price']").val(data.price);
             }
-		})
-        //productList += '<tr id="'+data[index]._id+'">'
-   // })
+        });
+    });
 
-};
-/*function update_row(sec, ent)
-{
-    $("#update").click(function()){
-        $.jax(
-            {
-                url: "/post/update",
-                type: "POST",
-                data:
-                {
-                    section: sec,
-                    entree: ent
-                },
-                cache: false,
-                success: setTimeout(draw_table, 1000)
-            })
-    })
-
-};*/
-/*
-function productList(){
-    $.ajax({
-        url:'',
-        type: 'GET',
-        dataType:'jason',
-        cache: false,
-        success: function(data){
-            createPtable(data);
+    // Delete Product
+    $('body').on('click', '#delete', function() {
+        // If we have our item id
+        if($('#item_id').val()) {
+            $.ajax({
+                url: '/users/' + $('#item_id').val(),
+                type: 'DELETE',
+                dataType: 'json',
+                success: function(data) {
+                    // Reload updated admin table
+                    draw_table();
+                }
+            });
         }
     });
-}
+    
+    $(document).on('submit','#adminForm',function(e){
+        e.preventDefault();
 
-function createPtable(){
-    let productList = '';
-    $.each(data, function(index){
-        productList += '<tr id="'+data[index]._id+'">'
-    })
-
-}
-*/
+        // Here I submit the form with Ajax
+        $.ajax({
+            url: '/users/',
+            type: 'POST',
+            data: { 
+                item: $("input[name='item']").val(),  
+                price: $("input[name='price']").val()
+            },
+            dataType: 'json',
+            success: function(data) {
+                // Reinit updated admin table
+                draw_table();
+            }
+        })
+    });
