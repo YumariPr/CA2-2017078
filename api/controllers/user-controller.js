@@ -1,31 +1,38 @@
 'use strict'
 const Product = require('../models/user');
 
-function getProduct (req, res) {
-    let productId = req.params.Product
-    console.log(req.params);
-    Product.findById(productId, (err, products) => {
-        console.log(productId);
-      if (err) return res.status(500).send({message : 'Erroor'})
-      if (!products) return res.status(404).send({message: 'Product does not exist'})
+exports.createProduct = function (req, res) { 
+    var newproduct = new Product(req.body);
+    newproduct.save(function (err, product) { 
+        if (err) { 
+            res.status(400).json(err);
+        }
+        res.json(product); 
+});
+};
 
-    res.send(200,{products })
-  
-    })
-}
+exports.getProduct = function (req, res) {
+    Product.findOne({_id: req.params.id}, function (err, product) {
+        
+      if (err) return res.status(500).send({message : 'Erroor'});
+      if (!products) return res.status(404).send({message: 'Product does not exist'});
 
-function getProducts (req, res) {
+    res.send(200,{products });
+    });
+};
+
+exports.getProducts = function (req, res) {
 
 Product.find({}, (err, products) => {
-    if (err) return res.status(500).send({message : 'Erroor'})
-    if (!products) return res.status(404).send({message: 'Product does not exist'})
+    if (err) return res.status(500).send({message : 'Erroor'});
+    if (!products) return res.status(404).send({message: 'Product does not exist'});
 
-    res.send(200,{products })
-})
+    res.send(200,{products });
+});
 
-}
+};
 
-function saveProduct (req, res){
+exports.updateProduct = function (req, res){
    console.log('POST /api/product');
    console.log(req.body);
 
@@ -34,40 +41,30 @@ function saveProduct (req, res){
     product.price = req.body.price;
     
     product.save((err, productStored) => {
-        if (err) res.status(500).send({message : 'Error to saved the product in the data base'})
+        if (err) res.status(500).send({message : 'Error to saved the product in the data base'});
 
-        res.send(200).send({product: productStored })
-    })
-}
+        res.send(200).send({product: productStored });
+    });
+};
 
-function updateProduct (req, res) {
-let productId = req.params.productId
-let update = req.body
+exports.saveProduct = function (req, res) {
 
-Product.findByIdAndUpdate(productId, update, (err, productUpdated) => {
-    if (err) res.status(500).send({message : 'Error to update the product in the data base'})
+    Product.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
+    if (err) res.status(500).send({message : 'Error to update the product in the data base'});
 
-    res.status(200).send({product: productUpdated })
-    })
-}
+    res.status(200).send({product: productUpdated });
+    });
+};
 
-function deleteProduct (req, res) {
+exports.deleteProduct  = function (req, res) {
     let productId = req.params.Product
     console.log(productId);
     Product.findById(productId, (err, product) => {
-    if (err) res.status(500).send({message : 'Error to delete the product in the data base'})
+    if (err) res.status(500).send({message : 'Error to delete the product in the data base'});
 
     product.remove(err => {
-        if (err) res.status(500).send({message: 'Error to the delete the product'})
-        res.status(200).send({message : 'Product Removed'})
-    })
-    })
-}
-
-module.exports = {
-    getProduct,
-    getProducts,
-    saveProduct,
-    updateProduct,
-    deleteProduct
-}
+        if (err) res.status(500).send({message: 'Error to the delete the product'});
+        res.status(200).send({message : 'Product Removed'});
+    });
+    });
+};

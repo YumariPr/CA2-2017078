@@ -64,17 +64,28 @@ Yumari Peña. Student number 2017078.-->
       </div>
     </nav>
 
-    <section class="page-section cta">
-      
-              <div class="container">
+    <section class="page-section cta">  
+    <div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-left">
 				<h1 class="mt-5">Welcome to Sweet Gelato's</h1>
 				<p class="lead">Select your entrees from the menu below</p>
 			</div>
-			<div id="results" class="col-lg-8 text-center order-3"></div>
+            <div id="results" class="col-lg-8 text-center order-3">
+                <table id="results_table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            
 			<div class="col-lg-4 text-center order-2">
-				<form name="formularioContacto" enctype="application/json" action="/post/json" method="post">
+				<form id="adminForm"  enctype="application/json" action="/products" method="post">
 					<div class="form-group">
 						<select class="form-control" name="sec_n">
 							<option value="0">Ice-Cream</option>

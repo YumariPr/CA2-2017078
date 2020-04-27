@@ -13,19 +13,19 @@ function draw_table()
 			cache: false,
 			success: function (html)
 			{
-				$("#results").append(html);
-				select_row();
+                buildTable(html);
+
 			}
 		});
 	};
-    $.getJSONuncached("/users")
+    $.getJSONuncached("/Product")
 };
 
 function buildTable(html) {
     
-    let usersHTML = '';
+    let ProductHTML = '';
     $.each(html, function(index) {
-        usersHTML += '<tr id="'+html[index]._id+'">'
+        ProductHTML += '<tr id="'+html[index]._id+'">'
             +  '<td align="left">'
             +  '<h5>'+html[index].item+'</h5>'
             +  '</td>'
@@ -34,7 +34,7 @@ function buildTable(html) {
             +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">Edit</button>'
             +  '</td></tr>';
     });
-    $('#results_table tbody').html(usersHTML);
+    $('#results_table tbody').html(ProductHTML);
 }
 
 
@@ -79,7 +79,7 @@ $(document).ready(function ()
         itemId = $(this).data('item');
 
         $.ajax({
-            url: '/users/' + itemId,
+            url: '/Product/' + itemId,
             type: 'GET',
             dataType: 'json',
             cache: false, // Appends _={timestamp} to the request query string
@@ -97,7 +97,7 @@ $(document).ready(function ()
         // If we have our item id
         if($('#item_id').val()) {
             $.ajax({
-                url: '/users/' + $('#item_id').val(),
+                url: '/Product/' + $('#item_id').val(),
                 type: 'DELETE',
                 dataType: 'json',
                 success: function(data) {
@@ -113,7 +113,7 @@ $(document).ready(function ()
 
         // Here I submit the form with Ajax
         $.ajax({
-            url: '/users/',
+            url: '/Product/',
             type: 'POST',
             data: { 
                 item: $("input[name='item']").val(),  
