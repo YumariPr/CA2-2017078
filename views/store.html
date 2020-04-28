@@ -13,9 +13,9 @@ Yumari Peña. Student number 2017078.-->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/business-casual.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/ICream.css">
-    
+     <!--
     <script src="js/ICream.js"></script>
-
+   
     <script>
         window.addEventListener("load", function() {
             document.forms[1].txtBillAmt.value = calculateBill('menuTable');
@@ -27,6 +27,7 @@ Yumari Peña. Student number 2017078.-->
             });
         });
     </script>
+    -->
 
 </head>
 
@@ -71,10 +72,22 @@ Yumari Peña. Student number 2017078.-->
 				<h1 class="mt-5">Welcome to Sweet Gelato's</h1>
 				<p class="lead">Select your entrees from the menu below</p>
 			</div>
-      
-        
+            
+            <div id="results" class="col-lg-8 text-center order-3">
+                <table id="results_table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>PRECIO</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            
 			<div class="col-lg-4 text-center order-2">
-				<form id="adminForm"  enctype="application/json" action="/products" method="post">
+				<form id="adminForm"  enctype="application/json" action="/" method="post">
 					<div class="form-group">
 						<select class="form-control" name="sec_n">
 							<option value="0">Ice-Cream</option>
@@ -106,7 +119,8 @@ Yumari Peña. Student number 2017078.-->
                         </tr>
                     </thead>
                     <tbody></tbody>
-                </table></div>
+                </table>
+        </div>
 <br/>
 <br/>
     <div class="container">

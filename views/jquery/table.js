@@ -4,8 +4,10 @@
 function draw_table()
 {
 	$("#results").empty();
-	$.getJSONuncached = function (url)
-	{
+    $.getJSONuncached = function (url)
+	{  
+        
+     
 		return $.ajax(
 		{
 			url: url,
@@ -13,6 +15,7 @@ function draw_table()
 			cache: false,
 			success: function (html)
 			{
+                
                 buildTable(html);
 
 			}
@@ -22,9 +25,12 @@ function draw_table()
 };
 
 function buildTable(html) {
-    
+    html=html.products;
     let ProductHTML = '';
     $.each(html, function(index) {
+        //console.log('PRUEBA html'+ html.products+' index '+index);
+        console.log(index);
+        console.log(html);
         ProductHTML += '<tr id="'+html[index]._id+'">'
             +  '<td align="left">'
             +  '<h5>'+html[index].item+'</h5>'
@@ -42,6 +48,7 @@ function select_row()
 {
 	$("#menuTable tbody tr[id]").click(function ()
 	{
+        console.log('ENTRE EN EDIT')
 		$(".selected").removeClass("selected");
 		$(this).addClass("selected");
 		var section = $(this).prevAll("tr").children("td[colspan='3']").length - 1;
@@ -79,7 +86,7 @@ $(document).ready(function ()
         itemId = $(this).data('item');
 
         $.ajax({
-            url: '/Product/' + itemId,
+            url: '/Product',// + itemId,
             type: 'GET',
             dataType: 'json',
             cache: false, // Appends _={timestamp} to the request query string
@@ -97,7 +104,7 @@ $(document).ready(function ()
         // If we have our item id
         if($('#item_id').val()) {
             $.ajax({
-                url: '/Product/' + $('#item_id').val(),
+                url: '/Product',// + $('#item_id').val(),
                 type: 'DELETE',
                 dataType: 'json',
                 success: function(data) {
@@ -110,10 +117,11 @@ $(document).ready(function ()
     
     $(document).on('submit','#adminForm',function(e){
         e.preventDefault();
-
+        console.log('ENTRE EN POST');
+        console.log($("input[name='item']").val());
         // Here I submit the form with Ajax
         $.ajax({
-            url: '/Product/',
+            url: '/',
             type: 'POST',
             data: { 
                 item: $("input[name='item']").val(),  
@@ -122,7 +130,7 @@ $(document).ready(function ()
             dataType: 'json',
             success: function(data) {
                 // Reinit updated admin table
-                draw_table();
+                //draw_table();
             }
         })
     });

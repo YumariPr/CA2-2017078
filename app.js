@@ -45,7 +45,7 @@ function jsToXmlFile(filename, obj, cb) {
 //We define the root of our website and render index.html located inside the views folder
 
 router.get('/', function(req, res){
-
+    console.log('PAGO DE COUOTA');
     res.render('index');
 
 })

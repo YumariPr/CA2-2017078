@@ -1,5 +1,5 @@
 'use strict'
-const Product = require('../models/user');
+const Product = require('../models/Product');
 
 exports.createProduct = function (req, res) { 
     var newproduct = new Product(req.body);
@@ -24,9 +24,9 @@ exports.getProduct = function (req, res) {
 exports.getProducts = function (req, res) {
 
 Product.find({}, (err, products) => {
+    console.log('PREUBA');
     if (err) return res.status(500).send({message : 'Erroor'});
     if (!products) return res.status(404).send({message: 'Product does not exist'});
-
     res.send(200,{products });
 });
 
