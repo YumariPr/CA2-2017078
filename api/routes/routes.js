@@ -20,7 +20,7 @@ router.post('/', userCtrl.createProduct);
 router.get('/Product', userCtrl.getProducts);
 router.get('/Product/:id', userCtrl.getProduct);
 router.delete('/Product/:id', userCtrl.deleteProduct);
-//router.put('/Product/:id', userCtrl.updateProduct);
+router.patch('/Product/:id', userCtrl.updateProduct);
 
 module.exports.UPLOAD_PATH = 'uploads';
 

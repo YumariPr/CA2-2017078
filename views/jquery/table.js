@@ -37,7 +37,7 @@ function buildTable(html) {
             +  '</td>'
             +  '<td align="right">'+html[index].price+'</td>'
             +  '<td>'
-            +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">Edit</button>'
+            +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">To Update or Delete</button>'
             +  '</td></tr>';
     });
     $('#results_table tbody').html(ProductHTML);
@@ -86,7 +86,7 @@ $(document).ready(function ()
         itemId = $(this).data('item');
 
         $.ajax({
-            url: '/Product',// + itemId,
+            url: '/Product/' + itemId,
             type: 'GET',
             dataType: 'json',
             cache: false, // Appends _={timestamp} to the request query string
@@ -104,7 +104,7 @@ $(document).ready(function ()
         // If we have our item id
         if($('#item_id').val()) {
             $.ajax({
-                url: '/Product',// + $('#item_id').val(),
+                url: '/Product', itemid,
                 type: 'DELETE',
                 dataType: 'json',
                 success: function(data) {
@@ -115,6 +115,27 @@ $(document).ready(function ()
         }
     });
     
+// Update Product
+    $('body').on('click', '#update', function() {
+        // If we have our item id
+        if($('#item_id').val()) {
+            $.ajax({
+                url: '/Product', item_id,
+                type: 'PATCH',
+                data: { 
+                item: $("input[name='item']").val(),  
+                price: $("input[name='price']").val()
+            },
+                dataType: 'json',
+                success: function(data) {
+                    // Reload updated admin table
+                    draw_table();
+                }
+            });
+        }
+    });
+    
+
     $(document).on('submit','#adminForm',function(e){
         e.preventDefault();
         console.log('ENTRE EN POST');
@@ -130,7 +151,7 @@ $(document).ready(function ()
             dataType: 'json',
             success: function(data) {
                 // Reinit updated admin table
-                //draw_table();
+                draw_table();
             }
         })
     });

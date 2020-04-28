@@ -72,29 +72,16 @@ Yumari Peña. Student number 2017078.-->
 				<h1 class="mt-5">Welcome to Sweet Gelato's</h1>
 				<p class="lead">Select your entrees from the menu below</p>
 			</div>
-            
-            <div id="results" class="col-lg-8 text-center order-3">
-                <table id="results_table">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>PRECIO</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            
+            <div id="results" class="col-lg-8 text-center order-3"></div>
 			<div class="col-lg-4 text-center order-2">
 				<form id="adminForm"  enctype="application/json" action="/" method="post">
-					<div class="form-group">
+					<!--<div class="form-group">
 						<select class="form-control" name="sec_n">
 							<option value="0">Ice-Cream</option>
 							<option value="1">Crepes</option>
 							<option value="2">Drinks/Extras</option>
 						</select>
-					</div>
+					</div>        Used in the last CA--> 
 					<div class="form-group">
 						<input class="form-control" type="text" name="item" placeholder="Item">
 					</div>
@@ -104,6 +91,7 @@ Yumari Peña. Student number 2017078.-->
 					<input type="hidden" name="item_id" id="item_id">
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
 				</form>
+                    <button id="update" class="btn btn-success btn-block">Update</button>
                     <button id="delete" class="btn btn-block btn-danger">Delete</button>
                     <p class="text-muted">To delete an entree, click the required row first</p>
              </div>
