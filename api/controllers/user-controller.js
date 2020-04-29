@@ -23,18 +23,17 @@ if (err) {
 };
 
 exports.getProducts = function (req, res) {
-
-Product.find({}, (err, products) => {
+    Product.find({}, (err, products) => { 
     console.log('Testing');
     if (err) return res.status(500).send({message : 'Erroor'});
-    if (!products) return res.status(404).send({message: 'Product does not exist'});
-    res.send(200,{products });
+    //if (!products) return res.status(404).send({message: 'Product does not exist'});
+    res.send(200,{products});
 });
 
 };
 
 exports.updateProduct = function (req, res){
-    product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
+    Product.findAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
         if (err) {
             res.status(400).json(err);
         }
@@ -43,7 +42,6 @@ exports.updateProduct = function (req, res){
 };
 
 exports.saveProduct = function (req, res) {
-
     Product.findByIdAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
     if (err) {
         res.status(400).json(err);
@@ -53,7 +51,7 @@ exports.saveProduct = function (req, res) {
 };
 
 exports.deleteProduct  = function (req, res) {
-    Product.findByIdAndRemove(re.params.id, (err, product) => {
+    Product.findByIdAndRemove(req.params.id, function (err, product) {
     if (err) { res.status(400).json(err);
     }
     res.json(product);

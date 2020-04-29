@@ -7,7 +7,7 @@ function draw_table()
     $.getJSONuncached = function (url)
 	{  
         
-     
+
 		return $.ajax(
 		{
 			url: url,
@@ -37,7 +37,7 @@ function buildTable(html) {
             +  '</td>'
             +  '<td align="right">'+html[index].price+'</td>'
             +  '<td>'
-            +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">To Update or Delete</button>'
+            +  '<button class="btn btn-sm btn-primary edit-row" data-item="'+html[index]._id+'">Click it</button>'
             +  '</td></tr>';
     });
     $('#results_table tbody').html(ProductHTML);
@@ -104,7 +104,7 @@ $(document).ready(function ()
         // If we have our item id
         if($('#item_id').val()) {
             $.ajax({
-                url: '/Product', itemid,
+                url: '/Product/'+ $('#item_id').val(),
                 type: 'DELETE',
                 dataType: 'json',
                 success: function(data) {
@@ -120,14 +120,18 @@ $(document).ready(function ()
         // If we have our item id
         if($('#item_id').val()) {
             $.ajax({
-                url: '/Product', item_id,
+                url: '/Product/'+ itemId,
                 type: 'PATCH',
+                dataType: 'json',
                 data: { 
                 item: $("input[name='item']").val(),  
                 price: $("input[name='price']").val()
             },
-                dataType: 'json',
                 success: function(data) {
+                     // data is a json object.
+                   /* $("input[name='item_id']").val(data._id);
+                    $("input[name='item']").val(data.item);
+                    $("input[name='price']").val(data.price);*/
                     // Reload updated admin table
                     draw_table();
                 }
