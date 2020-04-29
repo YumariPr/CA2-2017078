@@ -33,7 +33,7 @@ exports.getProducts = function (req, res) {
 };
 
 exports.updateProduct = function (req, res){
-    Product.findAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
+    Product.findOneAndUpdate({_id: req.params.id}, req.body, {new: true},function (err, product) {
         if (err) {
             res.status(400).json(err);
         }

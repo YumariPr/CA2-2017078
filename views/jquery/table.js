@@ -124,14 +124,15 @@ $(document).ready(function ()
                 type: 'PATCH',
                 dataType: 'json',
                 data: { 
-                item: $("input[name='item']").val(),  
+                _id: $("input[name='id']").val(),
+                item: $("input[name='item']").val(),
                 price: $("input[name='price']").val()
             },
                 success: function(data) {
                      // data is a json object.
-                   /* $("input[name='item_id']").val(data._id);
+                    $("input[name='item_id']").val(data._id);
                     $("input[name='item']").val(data.item);
-                    $("input[name='price']").val(data.price);*/
+                    $("input[name='price']").val(data.price);
                     // Reload updated admin table
                     draw_table();
                 }
